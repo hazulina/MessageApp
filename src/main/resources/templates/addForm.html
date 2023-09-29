@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AddForm</title>
+    <h1>MessageApp</h1>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #cccccc;
+    }
+
+    h1 {
+        margin: 0;
+        text-align: center;
+        padding: 20px;
+        background-color: #005d51;
+        color: #cccccc;
+    }
+
+    table {
+        width: 80%;
+        margin: 20px auto;
+        border-collapse: collapse;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        background-color: #cccccc;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #005d51;
+        color: #cccccc;
+        font-weight: bold;
+    }
+
+    tr:nth-child(even) {
+        background-color: #e5e5e5;
+    }
+
+    form {
+        width: 50%;
+        margin: 20px auto;
+        padding: 20px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        background-color: #cccccc;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    input[type="text"]{
+        background-color: rgba(0, 0, 15, 0.1);
+        width: 98%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    input[type="submit"] {
+        background-color: #005d51;
+        color: #cccccc;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #005d51;
+    }
+</style>
+<body>
+<form th:action="@{/messages/add}" th:object="${newMessage}" method="post">
+    <label for="message_text"> message_text: </label>
+    <input id="message_text" type="text" th:field="*{messageText}" placeholder="message_text">
+    <label for="sender_name"> sender_name: </label>
+    <input id="sender_name" type="text" th:value="${session.username}" name="senderName" readonly><br>
+    <input type="submit" value="Save">
+</form>
+</body>
+</html>

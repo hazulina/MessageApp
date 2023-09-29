@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+    <h1>MessageApp</h1>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #cccccc;
+        }
+
+        h1 {
+            margin: 0;
+            text-align: center;
+            padding: 20px;
+            background-color: #005d51;
+            color: #cccccc;
+        }
+        h3{
+            text-align: center;
+            padding: 20px;
+        }
+
+        form {
+            width: 50%;
+            margin: 20px auto;
+            padding: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+            background-color: #cccccc;
+        }
+
+        label {
+            display: inline;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"]{
+            width: 80%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input {
+            background-color: rgba(0, 0, 15, 0.1);
+            color:black;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button {
+            background-color: #005d51;
+            color: #cccccc;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<script>
+    function updateAction() {
+        let senderName = document.getElementById("senderName").value;
+        let form = document.getElementById("findByUser");
+        form.action = "/messages/" + encodeURIComponent(senderName);
+    }
+</script>
+<body>
+<h3 id="hi">Greetings <span th:text="${session.username}"></span>! How can I help?</h3>
+
+<form id="findByUser" th:action="@{/messages/}" method="get">
+    <label for="findByUser"> Find all messages where sender's name is: </label>
+    <input id="senderName" type="text" placeholder="write sender name here">
+    <button type="submit" onclick="updateAction();">Find</button>
+</form>
+
+<form id="getAllMessages" th:action="@{/messages}" method="get">
+    <label for="getAllMessages"> Get all messages </label>
+    <button type="submit"> Go</button>
+</form>
+<form th:action="@{/messages/add}" method="get">
+    <button name="addNewMessage" type="submit">Add new message</button>
+</form>
+</body>
+</html>

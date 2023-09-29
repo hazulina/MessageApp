@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>enter</title>
+</head>
+<script>
+    function onLoad() {
+        const userName = prompt("Write your name please:", "");
+        if (userName) {
+            window.location.href = "/setUsername?name=" + encodeURIComponent(userName);
+        }
+    }
+</script>
+<body onload="onLoad()">
+
+</body>
+</html>

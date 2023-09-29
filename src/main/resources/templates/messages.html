@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Messages</title>
+    <h1>MessageApp</h1>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #cccccc;
+    }
+
+    h1 {
+        margin: 0;
+        text-align: center;
+        padding: 20px;
+        background-color: #005d51;
+        color: #cccccc;
+    }
+
+    table {
+        width: 80%;
+        margin: 20px auto;
+        border-collapse: collapse;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        background-color: #cccccc;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #005d51;
+        color: #cccccc;
+        font-weight: bold;
+    }
+
+    tr:nth-child(even) {
+        background-color: #e5e5e5;
+    }
+
+    form {
+        width: 50%;
+        margin: 20px auto;
+        padding: 20px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        background-color: #cccccc;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    input[type="text"], input[type="number"], input[type="date"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    input[type="submit"] {
+        background-color: #005d51;
+        color: #cccccc;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #005d51;
+    }
+
+    #backBtn {
+        margin-left: 10%;
+        background-color: #005d51;
+        color: #cccccc;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    #backBtn:hover {
+        background-color: #005d51;
+    }
+</style>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>message_id</th>
+        <th>message_text</th>
+        <th>sender_name</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${allMessagesList}" th:each="message : ${allMessagesList}">
+        <td th:text="${message.getMessageId()}"></td>
+        <td th:text="${message.getMessageText()}"></td>
+        <td th:text="${message.getSenderName()}"></td>
+    </tr>
+    <tr th:if="${allMessagesBySenderName}" th:each="message : ${allMessagesBySenderName}">
+        <td th:text="${message.getMessageId()}"></td>
+        <td th:text="${message.getMessageText()}"></td>
+        <td th:text="${message.getSenderName()}"></td>
+    </tr>
+    </tbody>
+</table>
+<script>
+    function redirectToMainPage() {
+        window.location.href = "/index";
+    }
+</script>
+<button id="backBtn" type="button" onclick="redirectToMainPage()">To main page</button>
+</body>
+</html>
